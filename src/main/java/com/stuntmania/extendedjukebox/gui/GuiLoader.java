@@ -10,9 +10,11 @@ import com.stuntmania.extendedjukebox.tileentity.TELoader;
 public class GuiLoader extends GuiContainer {
 	
 	private GuiNumericalTextField commandTextField;
+	private TELoader te;
 	
 	public GuiLoader(InventoryPlayer inventoryPlayer, TELoader tileEntity) {
 		super(new ContainerLoader(inventoryPlayer, tileEntity));
+		this.te = tileEntity;
 	}
 	
 	@Override
@@ -32,6 +34,7 @@ public class GuiLoader extends GuiContainer {
 		this.commandTextField.setMaxStringLength(32767);
 		this.commandTextField.setFocused(true);
 		this.commandTextField.setText("HELLO I AM HERE");
+		System.out.println(te);
 		Keyboard.enableRepeatEvents(true);	
 	}
 	
