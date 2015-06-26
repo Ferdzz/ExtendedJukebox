@@ -5,15 +5,14 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 
-import com.stuntmania.extendedjukebox.tileentity.TEDish;
+import com.stuntmania.extendedjukebox.tileentity.TELoader;
 
 public class ContainerLoader extends Container {
 	
-	protected TEDish tileEntity;
+	protected TELoader tileEntity;
 	
-	public ContainerLoader(InventoryPlayer inventoryPlayer, TEDish te) {
+	public ContainerLoader(InventoryPlayer inventoryPlayer, TELoader te) {
 		this.tileEntity = te;
-		addSlotToContainer(new Slot(tileEntity, 0, 0, 0));
 		bindPlayerInventory(inventoryPlayer);
 	}
 	

@@ -16,11 +16,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.stuntmania.extendedjukebox.ExtendedJukebox;
-import com.stuntmania.extendedjukebox.tileentity.TEDish;
+import com.stuntmania.extendedjukebox.tileentity.TELoader;
 
 public class BlockLoader extends BlockContainer {
 	
-	private int[][] first = { { 0, -1, 0 }, { -1, -1, 0 }, { -1, -1, -1 }, { 0, -1, -1 }, { 1, -1, 0 }, { 1, -1, 1 }, { 0, -1, 1 }, { -1, -1, 1 }, { 1, -1, -1 } };
 	private IIcon[] icons;
 	
 	public BlockLoader() {
@@ -30,27 +29,13 @@ public class BlockLoader extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TEDish();
-	}
-	
-	public int getSize(World world, int x, int y, int z) {
-		if (world.canBlockSeeTheSky(x, y, z)) {
-			for (int i = 0; i < first.length; i++) {
-				if (!world.getBlock(first[i][0] + x, first[i][1] + y - 1, first[i][2] + z).equals(Blocks.iron_block))
-					return 1;
-			}
-			return 2;
-		} else {
-			return 0;
-		}
+		return new TELoader();
 	}
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-		if (!world.isRemote)
-			System.out.println(getSize(world, x, y + 1, z));
-		if (player.getCurrentEquippedItem() != null)
-			((TEDish) world.getTileEntity(x, y, z)).id = Item.getIdFromItem(player.getCurrentEquippedItem().getItem());
+		// if (player.getCurrentEquippedItem() != null)
+		// ((TELoader) world.getTileEntity(x, y, z)).id = Item.getIdFromItem(player.getCurrentEquippedItem().getItem());
 		
 		player.openGui(ExtendedJukebox.MODID, 0, world, x, y, z);
 		return true;

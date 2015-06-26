@@ -3,11 +3,13 @@ package com.stuntmania.extendedjukebox;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 
+import com.stuntmania.extendedjukebox.block.BlockAntenna;
 import com.stuntmania.extendedjukebox.block.BlockLoader;
 import com.stuntmania.extendedjukebox.gui.GuiLoader;
 import com.stuntmania.extendedjukebox.gui.GuiHandler;
 import com.stuntmania.extendedjukebox.proxy.CommonProxy;
-import com.stuntmania.extendedjukebox.tileentity.TEDish;
+import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
+import com.stuntmania.extendedjukebox.tileentity.TELoader;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -35,10 +37,11 @@ public class ExtendedJukebox {
 		System.out.println("Started loading " + MODID + " version " + VERSION);
 		
 		loader = new BlockLoader().setBlockName("blockLoader").setCreativeTab(CreativeTabs.tabAllSearch);
-		antenna = new BlockLoader().setBlockName("blockAntenna").setCreativeTab(CreativeTabs.tabAllSearch);
+		antenna = new BlockAntenna().setBlockName("blockAntenna").setCreativeTab(CreativeTabs.tabAllSearch);
 		GameRegistry.registerBlock(loader, "blockLoader");
 		GameRegistry.registerBlock(antenna, "blockAntenna");
-		GameRegistry.registerTileEntity(TEDish.class, "blockDish");
+		GameRegistry.registerTileEntity(TELoader.class, "blockDish");
+		GameRegistry.registerTileEntity(TEAntenna.class, "blockAntenna");
 		
 		proxy.registerRenderers();
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());

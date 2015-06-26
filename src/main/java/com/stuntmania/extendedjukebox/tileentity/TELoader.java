@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TEDish extends TileEntity implements IInventory{
+public class TELoader extends TileEntity implements IInventory{
 	public int id;
 	
 	@Override
