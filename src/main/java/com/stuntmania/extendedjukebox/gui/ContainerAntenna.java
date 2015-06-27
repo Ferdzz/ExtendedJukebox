@@ -11,8 +11,9 @@ public class ContainerAntenna extends Container{
 	public ContainerAntenna(TEAntenna te) {
 		this.te = te;
 	}
+	
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return te.isUseableByPlayer(player);
+		return true;
 	}
 }

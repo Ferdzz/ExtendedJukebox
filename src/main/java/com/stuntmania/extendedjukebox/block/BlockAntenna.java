@@ -34,7 +34,8 @@ public class BlockAntenna extends BlockContainer {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-		player.openGui(ExtendedJukebox.instance, 1, world, x, y, z);
+		if(!world.isRemote)
+			player.openGui(ExtendedJukebox.instance, 1, world, x, y, z);
 		return true;
 	}
 
