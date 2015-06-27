@@ -23,15 +23,16 @@ public class GuiAntenna extends GuiScreen {
 		textField = new GuiNumericalTextField(fontRendererObj, 0, 0, 50, 25, GuiNumericalTextField.FILTER_NUMERIC);
 		textField.setMaxStringLength(32767);
 		textField.setFocused(true);
-		textField.setText(te.id + "");
-		Keyboard.enableRepeatEvents(true);	
+		textField.setText(te.getId() + "");
+		Keyboard.enableRepeatEvents(true);
 	}
 	
 	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
 		PacketHandler.INSTANCE.sendToServer(new SyncMessage(te.xCoord, te.yCoord, te.zCoord, Integer.parseInt(textField.getText())));
-		te.id = Integer.parseInt(textField.getText());
+//		te.setId(Integer.parseInt(textField.getText()));
+		System.out.println(te.getId());
 	}
 	
 	public void updateScreen() {

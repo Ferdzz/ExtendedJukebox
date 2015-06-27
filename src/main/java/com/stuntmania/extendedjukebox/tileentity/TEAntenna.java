@@ -11,18 +11,27 @@ import net.minecraft.world.World;
 import com.stuntmania.extendedjukebox.block.BlockAntenna;
 
 public class TEAntenna extends TileEntity {
-	public int id;
+	private int id;
+	
+	public void setId(int parid) {
+		id = parid;
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+	}
+	
+	public int getId() {
+		return id;
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		id = tag.getInteger("id");
+		id = tag.getInteger("antennaid");
 	}
 	
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		tag.setInteger("id", id);
+		tag.setInteger("antennaid", id);
 	}
 	
 	@Override

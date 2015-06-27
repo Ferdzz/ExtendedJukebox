@@ -18,7 +18,6 @@ public class SyncMessage implements IMessage {
 	
 	@Override
 	public void toBytes(ByteBuf buf) {
-		// Writes the int into the buf
 		buf.writeInt(id);
 		buf.writeInt(x);
 		buf.writeInt(y);
@@ -27,7 +26,6 @@ public class SyncMessage implements IMessage {
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		// Reads the int back from the buf. Note that if you have multiple values, you must read in the same order you wrote.
 		id = buf.readInt();
 		x = buf.readInt();
 		y = buf.readInt();

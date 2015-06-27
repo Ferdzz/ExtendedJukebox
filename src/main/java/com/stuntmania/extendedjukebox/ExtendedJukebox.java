@@ -49,6 +49,7 @@ public class ExtendedJukebox {
 		proxy.registerRenderers();
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		PacketHandler.INSTANCE.registerMessage(SyncMessageHandler.class, SyncMessage.class, 0, Side.SERVER);
+		PacketHandler.INSTANCE.registerMessage(SyncMessageHandler.class, SyncMessage.class, 1, Side.CLIENT);
 	}
 
 	@EventHandler
