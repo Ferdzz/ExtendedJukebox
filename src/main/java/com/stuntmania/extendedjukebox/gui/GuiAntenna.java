@@ -1,27 +1,25 @@
 package com.stuntmania.extendedjukebox.gui;
 
+import net.minecraft.client.gui.GuiScreen;
+
 import org.lwjgl.input.Keyboard;
 
 import com.stuntmania.extendedjukebox.networking.PacketHandler;
 import com.stuntmania.extendedjukebox.networking.SyncMessage;
 import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiContainer;
-
-public class GuiAntenna extends GuiContainer {
+public class GuiAntenna extends GuiScreen {
 	
 	private TEAntenna te;
 	private GuiNumericalTextField textField;
 	
 	public GuiAntenna(TEAntenna te) {
-		super(new ContainerAntenna(te));
 		this.te = te;
 	}
 	
 	@Override
 	public void initGui() {
-		super.initGui();
+		System.out.println("antenna");
 		textField = new GuiNumericalTextField(fontRendererObj, 0, 0, 50, 25, GuiNumericalTextField.FILTER_NUMERIC);
 		textField.setMaxStringLength(32767);
 		textField.setFocused(true);
@@ -33,7 +31,7 @@ public class GuiAntenna extends GuiContainer {
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
 		PacketHandler.INSTANCE.sendToServer(new SyncMessage(te.xCoord, te.yCoord, te.zCoord, Integer.parseInt(textField.getText())));
-		super.onGuiClosed();
+		te.id = Integer.parseInt(textField.getText());
 	}
 	
 	public void updateScreen() {
@@ -65,10 +63,5 @@ public class GuiAntenna extends GuiContainer {
 	@Override
 	public boolean doesGuiPauseGame() {
 		return true;
-	}
-
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-		
 	}
 }

@@ -9,8 +9,8 @@ public class SyncMessage implements IMessage {
 	
 	public SyncMessage(){}
 	
-	public SyncMessage(int x, int y, int z, int toSend) {
-		this.id = toSend;
+	public SyncMessage(int x, int y, int z, int id) {
+		this.id = id;
 		this.x = x;
 		this.y = y;
 		this.z = z;

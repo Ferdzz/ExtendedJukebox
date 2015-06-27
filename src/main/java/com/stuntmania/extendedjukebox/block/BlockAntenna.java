@@ -1,15 +1,14 @@
 package com.stuntmania.extendedjukebox.block;
 
-import com.stuntmania.extendedjukebox.ExtendedJukebox;
-import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import com.stuntmania.extendedjukebox.ExtendedJukebox;
+import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
 
 public class BlockAntenna extends BlockContainer {
 
@@ -34,8 +33,7 @@ public class BlockAntenna extends BlockContainer {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-		if(!world.isRemote)
-			player.openGui(ExtendedJukebox.instance, 1, world, x, y, z);
+		player.openGui(ExtendedJukebox.instance, 1, world, x, y, z);
 		return true;
 	}
 
