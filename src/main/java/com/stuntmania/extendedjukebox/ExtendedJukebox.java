@@ -5,8 +5,10 @@ import net.minecraft.creativetab.CreativeTabs;
 
 import com.stuntmania.extendedjukebox.block.BlockAntenna;
 import com.stuntmania.extendedjukebox.block.BlockLoader;
-import com.stuntmania.extendedjukebox.gui.GuiLoader;
 import com.stuntmania.extendedjukebox.gui.GuiHandler;
+import com.stuntmania.extendedjukebox.networking.PacketHandler;
+import com.stuntmania.extendedjukebox.networking.SyncMessage;
+import com.stuntmania.extendedjukebox.networking.SyncMessageHandler;
 import com.stuntmania.extendedjukebox.proxy.CommonProxy;
 import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
 import com.stuntmania.extendedjukebox.tileentity.TELoader;
@@ -19,6 +21,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = ExtendedJukebox.MODID, version = ExtendedJukebox.VERSION)
 public class ExtendedJukebox {
@@ -45,6 +48,7 @@ public class ExtendedJukebox {
 		
 		proxy.registerRenderers();
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		PacketHandler.INSTANCE.registerMessage(SyncMessageHandler.class, SyncMessage.class, 0, Side.SERVER);
 	}
 
 	@EventHandler

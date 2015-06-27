@@ -2,6 +2,8 @@ package com.stuntmania.extendedjukebox.gui;
 
 import org.lwjgl.input.Keyboard;
 
+import com.stuntmania.extendedjukebox.networking.PacketHandler;
+import com.stuntmania.extendedjukebox.networking.SyncMessage;
 import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
 
 import net.minecraft.client.gui.GuiScreen;
@@ -30,7 +32,7 @@ public class GuiAntenna extends GuiContainer {
 	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
-		te.id = Integer.parseInt(textField.getText());
+		PacketHandler.INSTANCE.sendToServer(new SyncMessage(te.xCoord, te.yCoord, te.zCoord, Integer.parseInt(textField.getText())));
 		super.onGuiClosed();
 	}
 	

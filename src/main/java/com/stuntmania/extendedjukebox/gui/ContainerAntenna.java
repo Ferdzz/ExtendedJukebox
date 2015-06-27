@@ -6,13 +6,13 @@ import net.minecraft.inventory.Container;
 import com.stuntmania.extendedjukebox.tileentity.TEAntenna;
 
 public class ContainerAntenna extends Container{
-	protected TEAntenna tileEntity;
+	protected TEAntenna te;
 	
 	public ContainerAntenna(TEAntenna te) {
-		this.tileEntity = te;
+		this.te = te;
 	}
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return tileEntity.isUseableByPlayer(player);
+		return te.isUseableByPlayer(player);
 	}
 }

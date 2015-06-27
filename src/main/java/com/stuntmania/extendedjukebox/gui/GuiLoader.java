@@ -34,7 +34,6 @@ public class GuiLoader extends GuiContainer {
 		this.commandTextField.setMaxStringLength(32767);
 		this.commandTextField.setFocused(true);
 		this.commandTextField.setText("HELLO I AM HERE");
-		System.out.println(te);
 		Keyboard.enableRepeatEvents(true);	
 	}
 	

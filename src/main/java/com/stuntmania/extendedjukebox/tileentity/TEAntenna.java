@@ -1,6 +1,5 @@
 package com.stuntmania.extendedjukebox.tileentity;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -9,7 +8,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public class TEAntenna extends TileEntity implements IInventory {
 	public int id;
@@ -36,11 +34,6 @@ public class TEAntenna extends TileEntity implements IInventory {
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
 		readFromNBT(packet.func_148857_g());
-	}
-	
-	@Override
-	public boolean shouldRefresh(Block oldBlock, Block newBlock, int oldMeta, int newMeta, World world, int x, int y, int z) {
-		return true;
 	}
 	
 	@Override
